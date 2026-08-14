@@ -1,32 +1,16 @@
 {
   "username": "admin",
   "password": "1234",
-  "fields": {
-    "Field 1": {
-      "moisture": 25
-    },
-    "Field 2": {
-      "moisture": 45
-    },
-    "Field 3": {
-      "moisture": 35
-    }
-  },
-  "temperature": 32,
-  "humidity": 73,
+  "field1": 23,
+  "field2": 43,
+  "field3": 33,
+  "temperature": 30,
+  "humidity": 68,
   "tank": 70,
   "pump": false,
   "auto": false,
-  "pumpStart": 1786618344206,
   "history": [
-    "4:42:04 PM - Manual Pump ON",
-    "4:42:30 PM - Manual Pump OFF",
-    "4:52:24 PM - Manual Pump ON",
-    "Pump OFF",
     "Pump ON",
     "Pump OFF"
-  ],
-  "field1": null,
-  "field2": null,
-  "field3": null
+  ]
 }
