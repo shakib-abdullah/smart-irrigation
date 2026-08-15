@@ -241,11 +241,8 @@ function dashboard() {
     });
 }
 
-// Start
-console.log("\n🌱 SMART IRRIGATION MANAGEMENT SYSTEM\n");
-
-login();
-
+// Sensor update
+function updateSensors() {
 // Soil moisture
 
     if (data.pump) {
