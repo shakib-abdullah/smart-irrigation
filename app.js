@@ -245,3 +245,204 @@ function dashboard() {
 console.log("\n🌱 SMART IRRIGATION MANAGEMENT SYSTEM\n");
 
 login();
+
+// Soil moisture
+
+    if (data.pump) {
+
+        data.field1 += 5;
+        data.field2 += 5;
+        data.field3 += 5;
+
+        data.tank -= 5;
+
+    } 
+    else {
+
+        data.field1 -= 2;
+        data.field2 -= 2;
+        data.field3 -= 2;
+    }
+
+
+    // Keep moisture between 0 and 100
+
+    if (data.field1 > 100)
+        data.field1 = 100;
+
+    if (data.field1 < 0)
+        data.field1 = 0;
+
+
+    if (data.field2 > 100)
+        data.field2 = 100;
+
+    if (data.field2 < 0)
+        data.field2 = 0;
+
+
+    if (data.field3 > 100)
+        data.field3 = 100;
+
+    if (data.field3 < 0)
+        data.field3 = 0;
+
+
+    // Temperature
+    data.temperature =
+        Math.floor(Math.random() * 10) + 25;
+
+
+    // Humidity
+    data.humidity =
+        Math.floor(Math.random() * 30) + 50;
+
+
+    // Tank
+    if (data.tank < 0)
+        data.tank = 0;
+
+
+    // Automatic irrigation
+
+    if (data.auto) {
+
+        if (
+            data.field1 < 30 ||
+            data.field2 < 30 ||
+            data.field3 < 30
+        ) {
+
+            if (data.tank > 10) {
+
+                if (!data.pump) {
+
+                    data.pump = true;
+
+                    data.history.push(
+                        "Automatic Pump ON"
+                    );
+
+                    console.log(
+                        "\nAUTO: Soil is dry!"
+                    );
+
+                    console.log(
+                        "Pump automatically turned ON."
+                    );
+                }
+            }
+        }
+
+
+        if (
+            data.field1 >= 40 &&
+            data.field2 >= 40 &&
+            data.field3 >= 40
+        ) {
+
+            if (data.pump) {
+
+                data.pump = false;
+
+                data.history.push(
+                    "Automatic Pump OFF"
+                );
+
+                console.log(
+                    "\nAUTO: Soil moisture is sufficient."
+                );
+
+                console.log(
+                    "Pump automatically turned OFF."
+                );
+            }
+        }
+    }
+
+    save();
+
+    console.log(
+        "\nSensor data updated successfully!"
+    );
+}
+
+
+// Alerts
+function alerts() {
+
+    console.log("\n--------- ALERTS ---------");
+
+    let alertFound = false;
+
+
+    if (data.field1 < 30) {
+
+        console.log(
+            "WARNING: Field 1 soil is too dry!"
+        );
+
+        alertFound = true;
+    }
+
+
+    if (data.field2 < 30) {
+
+        console.log(
+            "WARNING: Field 2 soil is too dry!"
+        );
+
+        alertFound = true;
+    }
+
+
+    if (data.field3 < 30) {
+
+        console.log(
+            "WARNING: Field 3 soil is too dry!"
+        );
+
+        alertFound = true;
+    }
+
+
+    if (data.tank < 20) {
+
+        console.log(
+            "WARNING: Water tank is low!"
+        );
+
+        alertFound = true;
+    }
+
+
+    if (data.pump) {
+
+        console.log(
+            "INFO: Pump is currently running."
+        );
+    }
+
+
+    if (!alertFound) {
+
+        console.log(
+            "No serious alerts."
+        );
+    }
+}
+
+function backToDashboard() {
+
+    rl.question(
+        "\nPress ENTER to go back to Dashboard...",
+        () => {
+            dashboard();
+        }
+    );
+}
+
+// Start
+console.log("\n🌱 SMART IRRIGATION MANAGEMENT SYSTEM\n");
+
+login();
