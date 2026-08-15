@@ -8,7 +8,7 @@ const rl = readline.createInterface({
 
 let data = {
     username: "admin",
-    password: "1234",
+    password: "12345",
 
     field1: 25,
     field2: 45,
